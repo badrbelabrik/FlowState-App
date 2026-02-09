@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="m-0">
+    <main class="flex flex-col gap-4 justify-center items-center mx-4 min-h-screen pb-16">
+
+        <div id="current-task"
+            class="flex gap-2 justify-between items-center h-24 w-full bg-orange-500 rounded-xl px-4">
+            <img src="images/jslogo.png" alt="task logo" class="h-16">
+            <div>
+                <h1>Learning javascript</h1>
+                <p>50 mins</p>
+            </div>
+            <div class="flex justify-center items-center h-8 w-8 rounded-full bg-orange-400">
+                <i class="fa-solid fa-pause text-white"></i>
+            </div>
+        </div>
+
+        
+<!-- progress bar -->
+<div class="relative flex items-center justify-center h-64 w-64">
+  <!-- Progress Ring -->
+  <svg
+    class="absolute w-full h-full -rotate-90"
+    viewBox="0 0 100 100"
+  >
+    <!-- Background Circle -->
+    <circle
+      cx="50"
+      cy="50"
+      r="46"
+      stroke="#e5e7eb"
+      stroke-width="8"
+      fill="none"
+    />
+
+    <!-- Progress Circle -->
+    <circle
+      cx="50"
+      cy="50"
+      r="46"
+      stroke="currentColor"
+      stroke-width="8"
+      fill="none"
+      stroke-dasharray="289"
+      stroke-dashoffset="72"
+      stroke-linecap="round"
+      class="text-orange-500 transition-all duration-500"
+    />
+  </svg>
+
+  <!-- Center Content -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+    <span class="text-3xl font-bold">25:00</span>
+    <span class="text-sm text-gray-500">1 of 1 sessions</span>
+  </div>
+</div>
+  
+</div>
+
+            <h3 class="font-bold text-xl">Stay focused for 25 minutes</h3>
+            <div class="flex justify-around items-center gap-4 w-full">
+                <i class="fa-solid fa-rotate-right text-3xl"></i>
+                <p class="font-bold text-4xl">START</p>
+                <i class="fa-solid fa-pause text-3xl"></i>
+            </div>
+
+    </main>
+
+    <nav
+        class="flex gap-6 h-16 px-4 justify-between items-center shadow-[0_-6px_12px_rgba(0,0,0,0.15)]  rounded-xl bg-white sticky bottom-0 md:hidden">
+        <a href="main-page.html"><i class="fa-solid fa-house text-3xl"></i></a>
+        <a href=""><i class="fa-solid fa-circle-plus text-3xl"></i></a>
+        <a href=""><i class="fa-solid fa-stopwatch text-3xl"></i></a>
+        <a href="profile.html"><i class="fa-solid fa-user text-3xl"></i></a>
+    </nav>
+</body>
+
+</html>
