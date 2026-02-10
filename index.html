@@ -4,119 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Timer-App</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
-    <main class="m-4">
-    <!-- Top bar -->
-    <div id="top-bar" class="flex justify-between gap-4 my-4">
-        <div class="flex gap-2">
-            <div class="w-16 h-16 rounded-full bg-[url('images/blog-1.jpg')] bg-cover bg-center"></div>
-            <div class="self-center">
-                <h2 class="font-bold">Hello BADR !!</h2>
-                <span>Be productive today</span>
-            </div>
-        </div>
-        <i class="fa-solid fa-bell self-center text-[#0F2854]"></i>    
-    </div>
-
-    <!-- Current task -->
-    <div id="current-task" class="flex flex-col justify-center items-center gap-2 my-4">
-        <h2 class="self-start font-bold">Current task</h2>
-        <div class="flex gap-2 justify-between items-center h-24 w-full bg-[#1C4D8D] rounded-xl px-4">
-            <img src="images/jslogo.png" alt="task logo" class="h-16">
-            <div>
-                <h1 class="font-bold">Learning javascript</h1>
-                <p>50 mins</p>
-            </div>
-            <div class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4]">
-                <i class="fa-solid fa-pause text-white"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- Daily goal -->
-    <div id="daily-goal" class="flex flex-col justify-center items-center gap-2 my-4">
-        <h1 class="self-start font-bold">Daily goal</h1>
-        <div class="flex gap-2 justify-between items-center h-24 w-full bg-[#4988C4] rounded-xl px-4">
-            <img src="images/progress.png" alt="" class="h-16">
-            <div class="flex flex-col gap-2">
-                <h2 class="font-bold">Your daily goals almost done</h2>
-                <p class="text-center">5 of 8 completed</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Todays tasks -->
-    <div id="today-tasks" class="flex flex-col justify-center items-center gap-2 my-4">
-        <h1 class="self-start font-bold">Today's goals</h1>
-        <div class="flex flex-col justify-center items-center gap-4 w-full">
-            <!-- tasks list -->
-             <!-- task1 -->
-            <div  class="flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4">
-                <div class="flex flex-col gap-2">
-                    <h2 class="font-bold">Reply to emails</h2>
-                    <span>25 mins</span>
-                </div>
-                <div class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4]">
-                <i class="fa-solid fa-pause text-white"></i>
-            </div>
-            </div>
-            <!-- task1 end -->
-                          <!-- task1 -->
-            <div  class="flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4">
-                <div class="flex flex-col gap-2">
-                    <h2 class="font-bold">Reply to emails</h2>
-                    <p>25 mins</p>
-                </div>
-                <div class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4]">
-                <i class="fa-solid fa-pause text-white"></i>
-            </div>
-            </div>
-            <!-- task1 end -->
-                          <!-- task1 -->
-            <div  class="flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4">
-                <div class="flex flex-col gap-2">
-                    <h2 class="font-bold">Reply to emails</h2>
-                    <p>25 mins</p>
-                </div>
-                <div class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4]">
-                <i class="fa-solid fa-pause text-white"></i>
-            </div>
-            </div>
-            <!-- task1 end -->
-        </div>
-        <!-- add new task modal -->
-        <div id="modal" class="hidden fixed inset-0 z-50 flex flex-col gap-4 justify-center items-center bg-black/40 mt-8 mx-4">
-        <h1 class="font-bold text-3xl">New Task</h1>
-        <form action="" class="flex flex-col gap-4 self-start mt-8 w-full">
-            <label for="">Name :</label>
-                <input type="text" placeholder="task name" class="border rounded-2xl bg-orange-300 p-2 w-full" />
-            <label for="">Duration :</label>
-                <input type="number" placeholder="25" class="border rounded-2xl bg-orange-300 p-2 w-full" />
-            <label for="">Sessions :</label>
-                <input type="number" placeholder="1" class="border rounded-2xl bg-orange-300 p-2 w-full" />
-            <label for="">Schedule :</label>
-                <input type="date" placeholder="schedule" class="border rounded-2xl bg-orange-300 p-2 w-full" />
-            <button class="self-center flex justify-center items-center bg-orange-400 rounded-xl h-16 w-32 p-4 cursor-pointer">
-                <span class="font-bold text-2xl">ADD</span>
-            </button>
-        </form>
-    </div>
-    </div>
-</main>
-    <nav class="flex gap-6 h-16 px-4 justify-between items-center shadow-[0_-6px_12px_rgba(0,0,0,0.15)]  rounded-xl bg-white sticky bottom-0 md:hidden">
-        <a href="main-page.html"><i class="fa-solid fa-house text-[#0F2854] text-3xl "></i></a>
-        <a href=""><i class="fa-solid fa-circle-plus text-[#0F2854] text-3xl"></i></a>
-        <a href=""><i class="fa-solid fa-stopwatch text-[#0F2854] text-3xl"></i></a>
-        <a href="profile.html"><i class="fa-solid fa-user text-[#0F2854] text-3xl"></i></a>
-</nav>
-
+    <div id="root"></div>
+    <script type="module" src="./modules/app.js"></script>
 </body>
 
 </html>
