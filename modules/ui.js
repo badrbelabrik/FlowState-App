@@ -69,10 +69,107 @@ function todayTasks() {
             </div>`
 }
 
+function addTaskModal(){
+    return `<div id="modal"
+  class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+  aria-hidden="true"
+>
+  <!-- Modal Panel -->
+  <div
+    class="w-full max-w-md rounded-2xl bg-white shadow-xl"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <!-- Header -->
+    <div class="flex items-center justify-between bg-[#0F2854] px-5 py-3 rounded-t-2xl">
+      <h1 id="modal-title" class="font-bold text-2xl text-white">New Task</h1>
+
+      <!-- Close button -->
+      <button
+        type="button"
+        id="close-modal"
+        class="h-10 w-10 rounded-full flex items-center justify-center hover:bg-[#1C4D8D]/70"
+        aria-label="Close"
+      >
+        <i class="fa-solid fa-xmark text-xl text-white"></i>
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form id="task-form" class="flex flex-col gap-4 p-5 bg-[#BDE8F5] rounded-b-2xl">
+      <div class="flex flex-col gap-1">
+        <label for="task-name" class="font-semibold text-sm text-[#0F2854]">Name</label>
+        <input
+          id="task-name"
+          type="text"
+          placeholder="Task name"
+          class="border border-[#4988C4] rounded-2xl bg-white p-3 w-full focus:ring-2 focus:ring-[#4988C4]"
+          required
+        />
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1">
+          <label for="task-duration" class="font-semibold text-sm text-[#0F2854]">Duration (min)</label>
+          <input
+            id="task-duration"
+            type="number"
+            min="1"
+            value="25"
+            class="border border-[#4988C4] rounded-2xl bg-white p-3 focus:ring-2 focus:ring-[#4988C4]"
+            required
+          />
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="task-sessions" class="font-semibold text-sm text-[#0F2854]">Sessions</label>
+          <input
+            id="task-sessions"
+            type="number"
+            min="1"
+            value="1"
+            class="border border-[#4988C4] rounded-2xl bg-white p-3 focus:ring-2 focus:ring-[#4988C4]"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label for="task-date" class="font-semibold text-sm text-[#0F2854]">Schedule</label>
+        <input
+          id="task-date"
+          type="date"
+          class="border border-[#4988C4] rounded-2xl bg-white p-3 focus:ring-2 focus:ring-[#4988C4]"
+        />
+      </div>
+
+      <!-- Actions -->
+      <div class="flex gap-3 mt-2">
+        <button
+          type="button"
+          id="cancel-task"
+          class="flex-1 h-12 rounded-2xl border border-[#4988C4] font-semibold text-[#0F2854] bg-[#BDE8F5] hover:bg-[#4988C4]/30"
+        >
+          Cancel
+        </button>
+
+        <button
+          id="save-task"
+          class="flex-1 h-12 rounded-2xl bg-[#1C4D8D] font-bold text-white hover:bg-[#1C4D8D]/80"
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>`
+}
+
 function Navbar() {
     return `<nav class="flex gap-6 h-16 px-4 justify-between items-center shadow-[0_-6px_12px_rgba(0,0,0,0.15)]  rounded-xl bg-white sticky bottom-0 md:hidden">
         <a href="main-page.html"><i class="fa-solid fa-house text-[#0F2854] text-3xl "></i></a>
-        <a href=""><i class="fa-solid fa-circle-plus text-[#0F2854] text-3xl"></i></a>
+        <button id="open-modal"><i class="open-modal fa-solid fa-circle-plus text-[#0F2854] text-3xl"></i></button>
         <a href=""><i class="fa-solid fa-stopwatch text-[#0F2854] text-3xl"></i></a>
         <a href="profile.html"><i class="fa-solid fa-user text-[#0F2854] text-3xl"></i></a>
 </nav>`
