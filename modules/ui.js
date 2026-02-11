@@ -1,6 +1,6 @@
-import { getTasks} from "./storage.js"
+import { getTasks } from "./storage.js"
 
-function Header() {
+export function Header() {
     return `<div id="top-bar" class="flex justify-between gap-4 m-4">
         <div class="flex gap-2">
             <div class="w-16 h-16 rounded-full bg-[url('images/blog-1.jpg')] bg-cover bg-center"></div>
@@ -46,7 +46,7 @@ function ListTasks() {
     const taskslist = []
     for (const task of tasks) {
         const taskDiv = `<div  class="flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4">
-        <img src="${task.logo}" alt="task logo" class="h-16">        
+        <img src="${task.logo}" alt="task logo" class="h-12">        
         <div class="flex flex-col gap-2">
                     <h2 class="font-bold">${task.name}</h2>
                     <span>${task.sessions} session(s)</span>
@@ -78,8 +78,8 @@ function Navbar() {
 </nav>`
 }
 
-function AddTaskModal(){
-  return `<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" aria-hidden="true">
+function AddTaskModal() {
+    return `<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" aria-hidden="true">
       <!-- Modal Panel -->
       <div class="w-full max-w-md rounded-2xl bg-white shadow-xl" role="dialog" aria-modal="true"
         aria-labelledby="modal-title">
@@ -118,6 +118,21 @@ function AddTaskModal(){
           </div>
 
           <div class="flex flex-col gap-1">
+            <label for="task-logo" class="font-semibold text-sm text-[#0F2854]">Logo</label>
+            <select id="task-logo" type="text" placeholder="logo"
+              class="border border-[#4988C4] rounded-2xl bg-white p-3 w-full focus:ring-2 focus:ring-[#4988C4]"
+              required>
+                    <option value="images/task.png">task logo</option>
+                    <option value="images/cafe.png">cafe</option>
+                    <option value="images/graphic-tablet.png">graphic-tablet</option>
+                    <option value="images/laptop.png">laptop</option>
+                    <option value="images/mail.png">mail</option>
+                    <option value="images/work.png">work</option>
+                    <option value="images/work-table.png">work table</option>
+              </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
             <label for="task-date" class="font-semibold text-sm text-[#0F2854]">Schedule</label>
             <input id="task-date" type="date"
               class="border border-[#4988C4] rounded-2xl bg-white p-3 focus:ring-2 focus:ring-[#4988C4]" />
@@ -125,7 +140,7 @@ function AddTaskModal(){
 
           <!-- Actions -->
           <div class="flex gap-3 mt-2">
-            <button id="save-task"
+            <button id="save-task" type="submit"
               class="flex-1 h-12 rounded-2xl bg-[#1C4D8D] font-bold text-white hover:bg-[#1C4D8D]/80">
               Add
             </button>
@@ -133,8 +148,6 @@ function AddTaskModal(){
               class="close-modal flex-1 h-12 rounded-2xl border border-[#4988C4] font-semibold text-[#0F2854] bg-[#BDE8F5] hover:bg-[#4988C4]/30">
               Cancel
             </button>
-
-
           </div>
         </form>
       </div>
@@ -152,4 +165,4 @@ export function Layout() {
             ${Navbar()}
             ${AddTaskModal()}
     `
-}
+} 

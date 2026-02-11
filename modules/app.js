@@ -4,14 +4,32 @@ import {saveTask} from "./todo.js"
 const root = document.getElementById("root")
 root.innerHTML = Layout();
 
-const body = document.querySelector("body")
-body.addEventListener("click", function(event){
+root.addEventListener("click", function(event){
     const modal = document.getElementById("modal")
-    if(event.target.id === "open-modal" || event.target.parentElement.id === "open-modal"){
-        modal.classList.toggle("hidden")
-    } else if(event.target.classList.contains("close-modal") || event.target.closest(".close-modal")){
-        modal.classList.toggle("hidden")
-    } else if(event.target.id === "save-task"){
-        saveTask()
+    const el = event.target
+    if(el.closest(".open-modal")){
+        modal.classList.remove("hidden")
+        return
+    } else if(el.closest(".close-modal")){
+        modal.classList.add("hidden")
+        return
+    } if(el.id === ("modal") || el.id === "save-task"){
+        modal.classList.add("hidden")
+    } 
+})
+
+
+root.addEventListener("submit", function(event){
+    event.preventDefault()
+    const form = event.target
+    const data = {name : form.querySelector("#task-name").value,
+                    duration: Number(form.querySelector("#task-duration").value),
+                    sessions: Number(form.querySelector("#task-sessions").value),
+                    logo: form.querySelector("#task-logo").value,
+                    date: form.querySelector("#task-date").value
     }
+
+saveTask(data)
+form.reset()
+document.getElementById("modal").classList.add("hidden")
 })

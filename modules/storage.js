@@ -10,5 +10,3 @@ const tasks = [{name:"reply to emails", sessions:1,logo:"images/blog-1.jpg",isAc
                {name:"fix code errors", sessions:2,logo:"images/blog-1.jpg",isActive:false,terminated:false}
 ]
 
-
-
