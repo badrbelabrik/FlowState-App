@@ -15,7 +15,7 @@ root.addEventListener("click", function(event){
         return
     } if(el.id === ("modal") || el.id === "save-task"){
         modal.classList.add("hidden")
-    } 
+    }
 })
 
 
