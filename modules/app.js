@@ -1,5 +1,5 @@
 import {Layout} from "./ui.js"
-import {saveTask,displayEditTask, saveEditedTask} from "./todo.js"
+import {saveTask,displayEditTask, saveEditedTask,deleteTask} from "./todo.js"
 import { getTasks } from "./storage.js";
 
 const root = document.getElementById("root")
@@ -14,6 +14,7 @@ render()
 root.addEventListener("click", function(event){
     const modal = document.getElementById("modal")
     const editmodal = document.getElementById("edit-modal")
+    const deletemodal = document.getElementById("delete-modal")
     const el = event.target
     if(el.closest(".open-modal")){
         modal.classList.remove("hidden")
@@ -21,17 +22,26 @@ root.addEventListener("click", function(event){
     } else if(el.closest(".close-modal")){
         modal.classList.add("hidden")
         editmodal.classList.add("hidden")
+        deletemodal.classList.add("hidden")
         return
-    } if(el.id === ("modal") || el.id === "save-task"){
+    } if(el.id === ("modal") || el.id === "save-task" || el.id === ("edit-modal") || el.id === ("delete-modal")){
         modal.classList.add("hidden")
+        editmodal.classList.add("hidden")
+        deletemodal.classList.add("hidden")
         return
     } if(el.closest(".edit")){
         const id = el.closest(".card-div").dataset.id
         document.getElementById("edit-task-form").dataset.id = id
         displayEditTask(id)
         editmodal.classList.remove("hidden")
-    } else if(el.closest(".close-modal")){
-
+    } if(el.closest(".delete")){
+        deletemodal.classList.remove("hidden")
+        deletemodal.dataset.id = el.closest(".card-div").dataset.id
+    } if(el.id === ("delete-task-button") || el.closest.id === ("delete-task-button")){
+        const id = deletemodal.dataset.id
+        deleteTask(id)
+        deletemodal.classList.add("hidden")
+        render()
     }
     const menuBtn = el.closest(".task-menu")
     if(!menuBtn){

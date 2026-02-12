@@ -29,3 +29,10 @@ export function saveEditedTask(id){
     currentTask.date = document.getElementById("edit-date").value
     setTasks(tasks)
 }
+
+export function deleteTask(id){
+    const tasks = getTasks()
+    const index = tasks.findIndex(item => item.id == id)
+    tasks.splice(index,1)
+    setTasks(tasks)
+}
