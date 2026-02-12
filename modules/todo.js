@@ -9,15 +9,23 @@ export function saveTask(data){
    setTasks(tasks) 
 }
 
-export function editTask(id){
+export function displayEditTask(id){
     const tasks = getTasks()
     const currentTask = tasks.find(item => item.id == id)
     document.getElementById("edit-name").value = currentTask.name
     document.getElementById("edit-duration").value = currentTask.duration
     document.getElementById("edit-sessions").value = currentTask.sessions
     document.getElementById("edit-logo").value = currentTask.logo
-    document.getElementById("edit-date").value = currentTask.date
+    document.getElementById("edit-date").value = currentTask.date    
+}
 
-
-    
+export function saveEditedTask(id){
+    const tasks = getTasks()
+    const currentTask = tasks.find(item => item.id == id)
+    currentTask.name = document.getElementById("edit-name").value
+    currentTask.duration = document.getElementById("edit-duration").value
+    currentTask.sessions = document.getElementById("edit-sessions").value
+    currentTask.logo = document.getElementById("edit-logo").value
+    currentTask.date = document.getElementById("edit-date").value
+    setTasks(tasks)
 }

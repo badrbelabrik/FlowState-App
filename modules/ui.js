@@ -110,7 +110,7 @@ function AddTaskModal() {
         </div>
 
         <!-- Form -->
-        <form id="task-form" class="flex flex-col gap-4 p-5 bg-[#BDE8F5] rounded-b-2xl">
+        <form id="save-task-form" class="flex flex-col gap-4 p-5 bg-[#BDE8F5] rounded-b-2xl">
           <div class="flex flex-col gap-1">
             <label for="task-name" class="font-semibold text-sm text-[#0F2854]">Name</label>
             <input id="task-name" type="text" placeholder="Task name"
@@ -159,7 +159,7 @@ function AddTaskModal() {
               class="flex-1 h-12 rounded-2xl bg-[#1C4D8D] font-bold text-white hover:bg-[#1C4D8D]/80">
               Add
             </button>
-            <button type="button"
+            <button
               class="close-modal flex-1 h-12 rounded-2xl border border-[#4988C4] font-semibold text-[#0F2854] bg-[#BDE8F5] hover:bg-[#4988C4]/30">
               Cancel
             </button>
@@ -187,7 +187,7 @@ function editModal(){
         </div>
 
         <!-- Form -->
-        <form id="task-form" class="flex flex-col gap-4 p-5 bg-[#BDE8F5] rounded-b-2xl">
+        <form id="edit-task-form" class="flex flex-col gap-4 p-5 bg-[#BDE8F5] rounded-b-2xl">
           <div class="flex flex-col gap-1">
             <label for="edit-name" class="font-semibold text-sm text-[#0F2854]">Name</label>
             <input id="edit-name" type="text" placeholder="Task name"
@@ -232,9 +232,9 @@ function editModal(){
 
           <!-- Actions -->
           <div class="flex gap-3 mt-2">
-            <button id="save-task" type="submit"
+            <button id="edit-task" type="submit"
               class="flex-1 h-12 rounded-2xl bg-[#1C4D8D] font-bold text-white hover:bg-[#1C4D8D]/80">
-              Add
+              Update
             </button>
             <button type="submit"
               class="close-modal flex-1 h-12 rounded-2xl border border-[#4988C4] font-semibold text-[#0F2854] bg-[#BDE8F5] hover:bg-[#4988C4]/30">
