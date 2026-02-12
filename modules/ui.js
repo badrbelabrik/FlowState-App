@@ -1,6 +1,6 @@
 
 function Header() {
-    return `<div id="top-bar" class="flex justify-between gap-4 m-4">
+  return `<div id="top-bar" class="flex justify-between gap-4 m-4 md:max-w-sm">
         <div class="flex gap-2">
             <div class="w-16 h-16 rounded-full bg-[url('images/blog-1.jpg')] bg-cover bg-center"></div>
             <div class="self-center">
@@ -13,7 +13,7 @@ function Header() {
 }
 
 function CurrentTask() {
-    return `<div id="current-task" class="flex flex-col justify-center items-center gap-2 my-4">
+  return `<div id="current-task" class="flex flex-col justify-center items-center gap-2 my-4">
         <h2 class="self-start font-bold">Current task</h2>
         <div class="flex gap-2 justify-between items-center h-24 w-full bg-[#1C4D8D] rounded-xl px-4">
             <img src="images/jslogo.png" alt="task logo" class="h-16">
@@ -29,54 +29,51 @@ function CurrentTask() {
 }
 
 function DailyGoal() {
-    return `<div id="daily-goal" class="flex flex-col justify-center items-center gap-2 my-4">
+  return `<div id="daily-goal" class="flex flex-col justify-center items-center gap-2 my-4">
         <h2 class="self-start font-bold">Daily goal</h2>
         <div class="flex gap-2 justify-between items-center h-24 w-full bg-[#4988C4] rounded-xl px-4">
             <img src="images/progress.png" alt="" class="h-16">
             <div class="flex flex-col gap-2">
-                <h2 class="font-bold">Your daily goals almost done</h2>
+                <h2 class="font-bold text-center">Your daily goals almost done</h2>
                 <p class="text-center">5 of 8 completed</p>
             </div>
         </div>
     </div>`
 }
 function ListTasks(tasks) {
-    const taskslist = []
-    if (tasks.length > 0) {
-        for (const task of tasks) {
-            const taskDiv = `<div  class="card-div flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4" data-id="${task.id}">
+  const taskslist = []
+  if (tasks.length > 0) {
+    for (const task of tasks) {
+      const taskDiv = `<div  class="card-div flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4" data-id="${task.id}">
         <img src="${task.logo}" alt="task logo" class="h-12">        
         <div class="flex flex-col gap-2 text-center">
                     <h2 class="font-bold">${task.name}</h2>
                     <span>${task.sessions} session(s)</span>
                 </div>
                 <div class="relative flex gap-2 items-center">               
-                        <div class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4]">
-                            <i class="fa-solid fa-pause text-white"></i>
-                         </div>
+                        <button class="play-button"><i class="fa-solid fa-circle-play text-[#4988C4] text-3xl"></i></button>
                         <button class="task-menu rounded-full size-5 cursor-pointer"> ⋮ </button>
                         <div class="drop-menu hidden absolute right-5 bottom-0 mb-2 md:bottom-auto md:top-full md:mt-2 md:mb-0 w-28 bg-white rounded-lg shadow-lg z-50">
                             <button class="edit block w-full text-left px-3 py-2 rounded-t-lg hover:bg-gray-100">Edit</button>
                             <button class="delete block w-full text-left px-3 py-2 rounded-b-lg hover:bg-gray-100 text-red-500">Delete</button>
                         </div>
                 </div>
-
             </div>`
-            taskslist.push(taskDiv)
-        }
-    } else {
-        taskslist.push(`
+      taskslist.push(taskDiv)
+    }
+  } else {
+    taskslist.push(`
   <div class="w-full text-center text-gray-500">
     No tasks scheduled today
   </div>
 `)
-    }
+  }
 
-    return taskslist.join("")
+  return taskslist.join("")
 }
 
 function TodayTasks(tasks) {
-    return `<div id="today-tasks" class="flex flex-col justify-center items-center gap-2 my-4">
+  return `<div id="today-tasks" class="flex flex-col justify-center items-center gap-2 my-4">
                 <h2 class="self-start font-bold">Today's goals</h2>
                 <div class="flex flex-col justify-center items-center gap-4 w-full">
                     ${ListTasks(tasks)}
@@ -85,16 +82,28 @@ function TodayTasks(tasks) {
 }
 
 function Navbar() {
-    return `<nav class="flex gap-6 h-16 px-4 justify-between items-center shadow-[0_-6px_12px_rgba(0,0,0,0.15)]  rounded-xl bg-white sticky bottom-0 md:hidden">
-        <a href="main-page.html"><i class="fa-solid fa-house text-gray-800 text-3xl "></i></a>
-        <button class="open-modal"><i class="fa-solid fa-circle-plus text-gray-800 text-3xl"></i></button>
-        <a href=""><i class="fa-solid fa-stopwatch text-gray-800 text-3xl"></i></a>
-        <a href="profile.html"><i class="fa-solid fa-user text-gray-800 text-3xl"></i></a>
+  return `<nav class="
+  flex gap-6 h-16 px-4 justify-between items-center
+  shadow-[0_-6px_12px_rgba(0,0,0,0.15)]
+  rounded-xl
+  bg-white
+  sticky bottom-0
+
+  md:fixed md:left-0 md:top-1/2 md:-translate-y-1/2
+  md:h-auto md:flex-col md:items-start md:py-6 md:gap-8
+  md:shadow-[6px_0_12px_rgba(0,0,0,0.15)]
+  md:rounded-r-2xl md:rounded-l-none
+">
+        <button class="go-main flex items-center gap-3"><i class="fa-solid fa-house text-gray-800 text-2xl"></i><span class="hidden md:inline text-gray-800 font-medium">Home</span></button>
+        <button class="open-modal flex items-center gap-3"><i class="fa-solid fa-circle-plus text-gray-800 text-3xl"></i>  <span class="hidden md:inline text-gray-800 font-medium">Add task</span></button>
+        <button class="go-timer flex items-center gap-3"><i class="fa-solid fa-stopwatch text-gray-800 text-3xl"></i></i><span class="hidden md:inline text-gray-800 font-medium">Timer</span></button>
+        <a href="main-page.html" class="flex items-center gap-3"><i class="fa-solid fa-calendar-days text-gray-800 text-3xl"></i><span class="hidden md:inline text-gray-800 font-medium">Calendar</span></a>
+        <a href="main-page.html" class="flex items-center gap-3"><i class="fa-solid fa-user text-gray-800 text-3xl"></i><span class="hidden md:inline text-gray-800 font-medium">Profile</span></a>
 </nav>`
 }
 
 function AddTaskModal() {
-    return `<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+  return `<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
       <!-- Modal Panel -->
       <div class="w-full max-w-md rounded-2xl bg-white shadow-xl" role="dialog" aria-modal="true"
         aria-labelledby="modal-title">
@@ -170,8 +179,8 @@ function AddTaskModal() {
 `
 }
 
-function editModal(){
-        return `<div id="edit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+function editModal() {
+  return `<div id="edit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
       <!-- Modal Panel -->
       <div class="w-full max-w-md rounded-2xl bg-white shadow-xl" role="dialog" aria-modal="true"
         aria-labelledby="modal-title">
@@ -247,8 +256,8 @@ function editModal(){
 `
 }
 
-function deleteModal(){
-    return `        <div id="delete-modal" tabindex="-1"
+function deleteModal() {
+  return `        <div id="delete-modal" tabindex="-1"
             class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
             <div class="relative p-4 w-full max-w-md max-h-full">
                 <div class="relative bg-gray-100 border border-default rounded-base shadow-sm rounded-2xl p-4 md:p-6">
@@ -284,9 +293,9 @@ function deleteModal(){
         </div>`
 }
 
-export function Layout(tasks) {
-    return `${Header()}
-        <main class="m-4">
+export function MainLayout(tasks) {
+  return `${Header()}
+        <main class="mx-auto w-full max-w-xl p-4 md:p-8">
         ${CurrentTask()}
         ${DailyGoal()}
         ${TodayTasks(tasks)}
@@ -296,4 +305,14 @@ export function Layout(tasks) {
             ${editModal()}
             ${deleteModal()}
     `
-} 
+}
+
+export function TimerLayout(){
+    return `${Header()}
+        <main class="mx-auto w-full max-w-xl p-4 md:p-8">
+  this is timer page
+        </main>
+            ${Navbar()}
+    `
+}
+
