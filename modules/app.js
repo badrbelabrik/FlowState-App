@@ -1,8 +1,15 @@
 import {Layout} from "./ui.js"
-import {saveTask} from "./todo.js"
+import {saveTask,editTask} from "./todo.js"
+import { getTasks } from "./storage.js";
 
 const root = document.getElementById("root")
-root.innerHTML = Layout();
+
+function render(){
+    const tasks = getTasks()
+    root.innerHTML = Layout(tasks);
+}
+
+render()
 
 root.addEventListener("click", function(event){
     const modal = document.getElementById("modal")
@@ -15,7 +22,24 @@ root.addEventListener("click", function(event){
         return
     } if(el.id === ("modal") || el.id === "save-task"){
         modal.classList.add("hidden")
+        return
+    } if(el.closest(".edit")){
+        const editModal = document.querySelector("#edit-modal")
+        const id = el.closest(".card-div").dataset.id
+        editTask(id)
+        editModal.classList.remove("hidden")
     }
+    const menuBtn = el.closest(".task-menu")
+    if(!menuBtn){
+        root.querySelectorAll(".drop-menu").forEach(item => item.classList.add("hidden"))
+        return
+    }
+    root.querySelectorAll(".drop-menu").forEach(item => item.classList.add("hidden"))
+    const wrapper = menuBtn.closest(".relative")
+    const menu = wrapper.querySelector(".drop-menu")
+    menu.classList.toggle("hidden")
+
+
 })
 
 
@@ -32,4 +56,5 @@ root.addEventListener("submit", function(event){
 saveTask(data)
 form.reset()
 document.getElementById("modal").classList.add("hidden")
+render()
 })

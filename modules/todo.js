@@ -8,3 +8,16 @@ export function saveTask(data){
    tasks.push(newTask)
    setTasks(tasks) 
 }
+
+export function editTask(id){
+    const tasks = getTasks()
+    const currentTask = tasks.find(item => item.id == id)
+    document.getElementById("edit-name").value = currentTask.name
+    document.getElementById("edit-duration").value = currentTask.duration
+    document.getElementById("edit-sessions").value = currentTask.sessions
+    document.getElementById("edit-logo").value = currentTask.logo
+    document.getElementById("edit-date").value = currentTask.date
+
+
+    
+}
