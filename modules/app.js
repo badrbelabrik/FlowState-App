@@ -1,7 +1,7 @@
 import { MainLayout, TimerLayout } from "./ui.js"
 import { saveTask, displayEditTask, saveEditedTask, deleteTask } from "./todo.js"
 import { getTasks } from "./storage.js";
-import { StartTimer,PauseTimer } from "./timer.js";
+import { StartTimer,PauseTimer,ResetTimer } from "./timer.js";
 
 const root = document.getElementById("root")
 function render() {
@@ -70,6 +70,9 @@ root.addEventListener("click", function (event) {
     }
     if(el.closest("#btn-pause-timer")){
         PauseTimer()
+    }
+    if(el.closest("#btn-reset-timer")){
+        ResetTimer()
     }
     const menuBtn = el.closest(".task-menu")
     // Close all menus

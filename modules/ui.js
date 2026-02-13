@@ -124,7 +124,7 @@ function ProgressBar() {
 function TimerTools() {
   return `  <h3 class="font-bold text-[#000e27] text-xl">Stay focused for 25 minutes</h3>
             <div class="flex justify-around items-center gap-16">
-                <i class="fa-solid fa-rotate-right text-[#000e27] text-3xl cursor-pointer"></i>
+                <button id="btn-reset-timer"><i class="fa-solid fa-rotate-right text-[#000e27] text-3xl cursor-pointer"></i></button>
                 <button id="btn-start-timer" class="start-timer font-bold text-[#000e27] text-4xl cursor-pointer">START</button>
                 <button id="btn-pause-timer"><i class="fa-solid fa-pause text-[#000e27] text-3xl cursor-pointer"></i></button>
             </div>`
