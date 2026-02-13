@@ -2,19 +2,25 @@
 
 let intervalID = null;
 let count = 0
-
-export function StartTimer(){
-    const timerCounter = document.getElementById("timer-counter")
+const timerCounter = document.getElementById("timer-counter")
+export function StartTimer() {
     if (intervalID !== null) return;
-    intervalID = setInterval(function(){
-            count +=1;
-            timerCounter.textContent = count;
-        }, 1000)
-        console.log(intervalID)
-    }
+    intervalID = setInterval(function () {
+        count += 1;
+        timerCounter.textContent = count;
+    }, 1000)
+    console.log("starting intervalID =", intervalID);
+}
 
-export function PauseTimer(){
-        clearInterval(intervalID)
-        intervalID = null;
-}    
+export function PauseTimer() {
+    console.log("pausing intervalID =", intervalID);
+    clearInterval(intervalID)
+    intervalID = null;
 
+}
+
+export function ResetTimer(){
+    clearInterval(intervalID)
+    timerCounter
+
+}
