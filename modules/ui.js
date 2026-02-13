@@ -81,7 +81,7 @@ function TodayTasks(tasks) {
             </div>`
 }
 
-function ProgressBar(){
+function ProgressBar() {
   return `<div class="relative flex items-center justify-center h-64 w-64">
   <!-- Progress Ring -->
   <svg
@@ -121,12 +121,12 @@ function ProgressBar(){
 </div>`
 }
 
-function TimerTools(){
+function TimerTools() {
   return `  <h3 class="font-bold text-[#000e27] text-xl">Stay focused for 25 minutes</h3>
             <div class="flex justify-around items-center gap-16">
                 <i class="fa-solid fa-rotate-right text-[#000e27] text-3xl cursor-pointer"></i>
-                <p class="start-timer font-bold text-[#000e27] text-4xl cursor-pointer">START</p>
-                <i class="fa-solid fa-pause text-[#000e27] text-3xl cursor-pointer"></i>
+                <button id="btn-start-timer" class="start-timer font-bold text-[#000e27] text-4xl cursor-pointer">START</button>
+                <button id="btn-pause-timer"><i class="fa-solid fa-pause text-[#000e27] text-3xl cursor-pointer"></i></button>
             </div>`
 }
 
@@ -356,14 +356,17 @@ export function MainLayout(tasks) {
     `
 }
 
-export function TimerLayout(){
-    return `${Header()}
+export function TimerLayout() {
+  return `${Header()}
         <main class="flex flex-col gap-4 justify-center items-center mx-4 min-h-screen pb-16">
             ${CurrentTask()}
             ${ProgressBar()}
             ${TimerTools()}
         </main>
             ${Navbar()}
+            ${AddTaskModal()}
+            ${editModal()}
+            ${deleteModal()}
     `
 }
 

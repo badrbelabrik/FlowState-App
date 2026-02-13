@@ -1,9 +1,9 @@
 import { MainLayout, TimerLayout } from "./ui.js"
 import { saveTask, displayEditTask, saveEditedTask, deleteTask } from "./todo.js"
 import { getTasks } from "./storage.js";
+import { StartTimer,PauseTimer } from "./timer.js";
 
 const root = document.getElementById("root")
-
 function render() {
     const tasks = getTasks()
     const hash = location.hash || "#main";
@@ -21,6 +21,7 @@ function render() {
 }
 render()
 window.addEventListener("hashchange", render);
+
 
 root.addEventListener("click", function (event) {
     const modal = document.getElementById("modal")
@@ -64,8 +65,13 @@ root.addEventListener("click", function (event) {
         deletemodal.classList.add("hidden")
         render()
     }
+    if(el.id === ("btn-start-timer")){
+        StartTimer()
+    }
+    if(el.closest("#btn-pause-timer")){
+        PauseTimer()
+    }
     const menuBtn = el.closest(".task-menu")
-
     // Close all menus
     root.querySelectorAll(".drop-menu")
         .forEach(item => item.classList.add("hidden"))
