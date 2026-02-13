@@ -1,6 +1,6 @@
 
 function Header() {
-  return `<div id="top-bar" class="flex justify-between gap-4 m-4 md:max-w-sm">
+  return `<div id="top-bar" class="bg-white flex justify-between gap-4 m-4 sticky top-0 md:max-w-sm md:fixed md:top-0">
         <div class="flex gap-2">
             <div class="w-16 h-16 rounded-full bg-[url('images/blog-1.jpg')] bg-cover bg-center"></div>
             <div class="self-center">
@@ -21,9 +21,9 @@ function CurrentTask() {
                 <h2 class="font-bold">Learning javascript</h2>
                 <p>50 mins</p>
             </div>
-            <div class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4]">
+            <button class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4] cursor-pointer">
                 <i class="fa-solid fa-pause text-white"></i>
-            </div>
+            </button>
         </div>
     </div>`
 }
@@ -51,7 +51,7 @@ function ListTasks(tasks) {
                     <span>${task.sessions} session(s)</span>
                 </div>
                 <div class="relative flex gap-2 items-center">               
-                        <button class="play-button"><i class="fa-solid fa-circle-play text-[#4988C4] text-3xl"></i></button>
+                        <button class="play-button cursor-pointer"><i class="fa-solid fa-circle-play text-[#4988C4] text-3xl"></i></button>
                         <button class="task-menu rounded-full size-5 cursor-pointer"> ⋮ </button>
                         <div class="drop-menu hidden absolute right-5 bottom-0 mb-2 md:bottom-auto md:top-full md:mt-2 md:mb-0 w-28 bg-white rounded-lg shadow-lg z-50">
                             <button class="edit block w-full text-left px-3 py-2 rounded-t-lg hover:bg-gray-100">Edit</button>
@@ -81,6 +81,55 @@ function TodayTasks(tasks) {
             </div>`
 }
 
+function ProgressBar(){
+  return `<div class="relative flex items-center justify-center h-64 w-64">
+  <!-- Progress Ring -->
+  <svg
+    class="absolute w-full h-full -rotate-90"
+    viewBox="0 0 100 100"
+  >
+    <!-- Background Circle -->
+    <circle
+      cx="50"
+      cy="50"
+      r="46"
+      stroke="#e5e7eb"
+      stroke-width="8"
+      fill="none"
+    />
+
+    <!-- Progress Circle -->
+    <circle
+      cx="50"
+      cy="50"
+      r="46"
+      stroke="currentColor"
+      stroke-width="8"
+      fill="none"
+      stroke-dasharray="289"
+      stroke-dashoffset="72"
+      stroke-linecap="round"
+      class="text-[#4988C4] transition-all duration-500"
+    />
+  </svg>
+
+  <!-- Center Content -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+    <h2 id="timer-counter" class="text-3xl font-bold">25:00</h2>
+    <span id="timer-sessions" class="text-sm text-gray-500">1 of 1 sessions</span>
+  </div>
+</div>`
+}
+
+function TimerTools(){
+  return `  <h3 class="font-bold text-[#000e27] text-xl">Stay focused for 25 minutes</h3>
+            <div class="flex justify-around items-center gap-16">
+                <i class="fa-solid fa-rotate-right text-[#000e27] text-3xl cursor-pointer"></i>
+                <p class="start-timer font-bold text-[#000e27] text-4xl cursor-pointer">START</p>
+                <i class="fa-solid fa-pause text-[#000e27] text-3xl cursor-pointer"></i>
+            </div>`
+}
+
 function Navbar() {
   return `<nav class="
   flex gap-6 h-16 px-4 justify-between items-center
@@ -90,15 +139,15 @@ function Navbar() {
   sticky bottom-0
 
   md:fixed md:left-0 md:top-1/2 md:-translate-y-1/2
-  md:h-auto md:flex-col md:items-start md:py-6 md:gap-8
+  md:h-auto md:flex-col md:items-start md:justify-center md:py-6 md:gap-8
   md:shadow-[6px_0_12px_rgba(0,0,0,0.15)]
   md:rounded-r-2xl md:rounded-l-none
 ">
-        <button class="go-main flex items-center gap-3"><i class="fa-solid fa-house text-gray-800 text-2xl"></i><span class="hidden md:inline text-gray-800 font-medium">Home</span></button>
-        <button class="open-modal flex items-center gap-3"><i class="fa-solid fa-circle-plus text-gray-800 text-3xl"></i>  <span class="hidden md:inline text-gray-800 font-medium">Add task</span></button>
-        <button class="go-timer flex items-center gap-3"><i class="fa-solid fa-stopwatch text-gray-800 text-3xl"></i></i><span class="hidden md:inline text-gray-800 font-medium">Timer</span></button>
-        <a href="main-page.html" class="flex items-center gap-3"><i class="fa-solid fa-calendar-days text-gray-800 text-3xl"></i><span class="hidden md:inline text-gray-800 font-medium">Calendar</span></a>
-        <a href="main-page.html" class="flex items-center gap-3"><i class="fa-solid fa-user text-gray-800 text-3xl"></i><span class="hidden md:inline text-gray-800 font-medium">Profile</span></a>
+        <button class="go-main flex items-center gap-3 cursor-pointer"><i class="fa-solid fa-house text-gray-800 text-2xl"></i><span class="hidden md:inline text-gray-800 font-medium">Home</span></button>
+        <button class="open-modal flex items-center gap-3 cursor-pointer"><i class="fa-solid fa-circle-plus text-gray-800 text-3xl"></i>  <span class="hidden md:inline text-gray-800 font-medium">Add task</span></button>
+        <button class="go-timer flex items-center gap-3 cursor-pointer"><i class="fa-solid fa-stopwatch text-gray-800 text-3xl"></i></i><span class="hidden md:inline text-gray-800 font-medium">Timer</span></button>
+        <button class="flex items-center gap-3 cursor-pointer"><i class="fa-solid fa-calendar-days text-gray-800 text-3xl"></i><span class="hidden md:inline text-gray-800 font-medium">Calendar</span></button>
+        <button class="flex items-center gap-3 cursor-pointer"><i class="fa-solid fa-user text-gray-800 text-3xl"></i><span class="hidden md:inline text-gray-800 font-medium">Profile</span></button>
 </nav>`
 }
 
@@ -309,8 +358,10 @@ export function MainLayout(tasks) {
 
 export function TimerLayout(){
     return `${Header()}
-        <main class="mx-auto w-full max-w-xl p-4 md:p-8">
-  this is timer page
+        <main class="flex flex-col gap-4 justify-center items-center mx-4 min-h-screen pb-16">
+            ${CurrentTask()}
+            ${ProgressBar()}
+            ${TimerTools()}
         </main>
             ${Navbar()}
     `

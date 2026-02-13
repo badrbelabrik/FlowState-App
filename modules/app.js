@@ -27,6 +27,16 @@ root.addEventListener("click", function (event) {
     const editmodal = document.getElementById("edit-modal")
     const deletemodal = document.getElementById("delete-modal")
     const el = event.target
+    if (el.closest(".play-button")) {
+        const id = el.closest(".card-div").dataset.id
+        location.hash = `#timer?taskId=${id}`
+    } if (el.closest(".go-timer")) {
+        location.hash = "#timer"
+        return
+    }
+    if (el.closest(".go-main")) {
+        location.hash = "#main"
+    }
     if (el.closest(".open-modal")) {
         modal.classList.remove("hidden")
         return
@@ -48,33 +58,23 @@ root.addEventListener("click", function (event) {
     } if (el.closest(".delete")) {
         deletemodal.classList.remove("hidden")
         deletemodal.dataset.id = el.closest(".card-div").dataset.id
-    } if (el.id === ("delete-task-button") || el.closest.id === ("delete-task-button")) {
+    } if (el.id === ("delete-task-button") || el.closest("#delete-task-button")) {
         const id = deletemodal.dataset.id
         deleteTask(id)
         deletemodal.classList.add("hidden")
         render()
     }
-    if (el.closest(".play-button")) {
-        const id = el.closest(".card-div").dataset.id
-        location.hash = `#timer?taskId=${id}`
-    } if (el.closest(".go-timer")) {
-        location.hash = "#timer"
-        return
-    }
-    if (el.closest(".go-main")) {
-        location.hash = "#main"
-    }
     const menuBtn = el.closest(".task-menu")
-    if (!menuBtn) {
-        root.querySelectorAll(".drop-menu").forEach(item => item.classList.add("hidden"))
-        return
+
+    // Close all menus
+    root.querySelectorAll(".drop-menu")
+        .forEach(item => item.classList.add("hidden"))
+
+    if (menuBtn) {
+        const wrapper = menuBtn.closest(".relative")
+        const menu = wrapper?.querySelector(".drop-menu")
+        menu?.classList.remove("hidden")
     }
-    root.querySelectorAll(".drop-menu").forEach(item => item.classList.add("hidden"))
-    const wrapper = menuBtn.closest(".relative")
-    const menu = wrapper.querySelector(".drop-menu")
-    menu.classList.toggle("hidden")
-
-
 })
 
 
