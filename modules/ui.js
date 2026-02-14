@@ -99,7 +99,7 @@ function ProgressBar() {
     />
 
     <!-- Progress Circle -->
-    <circle
+    <circle id="ring-progress"
       cx="50"
       cy="50"
       r="46"
@@ -115,7 +115,7 @@ function ProgressBar() {
 
   <!-- Center Content -->
   <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-    <h2 id="timer-counter" class="text-3xl font-bold">25:00</h2>
+    <h2 id="timer-counter" class="text-3xl text-[#000e27] font-bold">25:00</h2>
     <span id="timer-sessions" class="text-sm text-gray-500">1 of 1 sessions</span>
   </div>
 </div>`

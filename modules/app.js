@@ -1,7 +1,7 @@
 import { MainLayout, TimerLayout } from "./ui.js"
 import { saveTask, displayEditTask, saveEditedTask, deleteTask } from "./todo.js"
 import { getTasks } from "./storage.js";
-import { StartTimer,PauseTimer,ResetTimer } from "./timer.js";
+import { initTimer,StartTimer,PauseTimer,ResetTimer } from "./timer.js";
 
 const root = document.getElementById("root")
 function render() {
@@ -13,11 +13,13 @@ function render() {
 
         const task = tasks.find(t => t.id === taskId);
 
-        root.innerHTML = TimerLayout(task); // TimerLayout should handle task=null too
+        root.innerHTML = TimerLayout(task);// TimerLayout should handle task=null too
+        initTimer(task) 
         return;
     }
 
     root.innerHTML = MainLayout(tasks);
+    
 }
 render()
 window.addEventListener("hashchange", render);
