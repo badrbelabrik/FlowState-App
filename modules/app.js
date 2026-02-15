@@ -13,7 +13,7 @@ function render() {
 
         const task = tasks.find(t => t.id === taskId);
 
-        root.innerHTML = TimerLayout(task);// TimerLayout should handle task=null too
+        root.innerHTML = TimerLayout(task);
         initTimer(task) 
         return;
     }
@@ -113,3 +113,15 @@ root.addEventListener("submit", function (event) {
     }
 
 })
+
+export function ShowMessage(message, duration , color) {
+    const toast = document.getElementById("message");
+
+    toast.textContent = message;
+    toast.className = `fixed top-4 right-4 text-white px-4 py-2 rounded shadow ${color}`;
+    toast.classList.remove("hidden");
+
+    setTimeout(() => {
+        toast.classList.add("hidden");
+    }, duration);
+}

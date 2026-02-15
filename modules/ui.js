@@ -15,11 +15,11 @@ function Header() {
 function CurrentTask() {
   return `<div id="current-task" class="flex flex-col justify-center items-center gap-2 my-4">
         <h2 class="self-start font-bold">Current task</h2>
-        <div class="flex gap-2 justify-between items-center h-24 w-full bg-[#1C4D8D] rounded-xl px-4">
-            <img src="images/jslogo.png" alt="task logo" class="h-16">
+        <div class="flex gap-2 justify-between items-center h-24 w-full bg-gradient-to-r from-[#BDE8F5] via-[#4988C4] to-[#1C4D8D] rounded-xl px-4">
+            <img id="currentImg" src="images/jslogo.png" alt="task logo" class="h-16">
             <div>
-                <h2 class="font-bold">Learning javascript</h2>
-                <p>50 mins</p>
+                <h2 id="currentTitle" class="font-bold">Learning javascript</h2>
+                <p id="currentDuration">50 mins</p>
             </div>
             <button class="flex justify-center items-center h-8 w-8 rounded-full bg-[#4988C4] cursor-pointer">
                 <i class="fa-solid fa-pause text-white"></i>
@@ -31,7 +31,7 @@ function CurrentTask() {
 function DailyGoal() {
   return `<div id="daily-goal" class="flex flex-col justify-center items-center gap-2 my-4">
         <h2 class="self-start font-bold">Daily goal</h2>
-        <div class="flex gap-2 justify-between items-center h-24 w-full bg-[#4988C4] rounded-xl px-4">
+        <div class="flex gap-2 justify-between items-center h-24 w-full bg-gradient-to-r from-[#BDE8F5] to-[#4988C4] rounded-xl px-4">
             <img src="images/progress.png" alt="" class="h-16">
             <div class="flex flex-col gap-2">
                 <h2 class="font-bold text-center">Your daily goals almost done</h2>
@@ -342,6 +342,7 @@ function deleteModal() {
         </div>`
 }
 
+
 export function MainLayout(tasks) {
   return `${Header()}
         <main class="mx-auto w-full max-w-xl p-4 md:p-8">
@@ -358,7 +359,7 @@ export function MainLayout(tasks) {
 
 export function TimerLayout() {
   return `${Header()}
-        <main class="flex flex-col gap-4 justify-center items-center mx-4 min-h-screen pb-16">
+        <main class="flex flex-col gap-4 justify-center items-center mx-4 min-h-screen w-full pb-16">
             ${CurrentTask()}
             ${ProgressBar()}
             ${TimerTools()}
