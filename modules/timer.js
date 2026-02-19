@@ -16,7 +16,7 @@ export function initTimer(task){
     document.getElementById("currentImg").src = currentTask.logo
     document.getElementById("currentTitle").textContent = currentTask.name
     document.getElementById("currentDuration").textContent = currentTask.duration +'mins'}
-  
+
     const durationMin = currentTask?.duration ?? 25;
     totalSeconds = durationMin * 60;
     remainingSeconds = totalSeconds;
@@ -41,7 +41,7 @@ export function StartTimer() {
         if(remainingSeconds <= 0){
         remainingSeconds = 0;
         render()
-        taskStatus()
+        taskStatus(currentTask)
         ShowMessage("Time ended !!!", 8000,"bg-[#4988C4]")
     }
     render()
@@ -52,18 +52,18 @@ function setupRing() {
   const ring = document.getElementById("ring-progress");
   if (!ring) return;
 
-  const r = ring.r.baseVal.value;           // 46 from your markup
-  circumference = 2 * Math.PI * r;          // ~289.03
+  const r = ring.r.baseVal.value;           
+  circumference = 2 * Math.PI * r;          
 
   ring.style.strokeDasharray = `${circumference}`;
-  ring.style.strokeDashoffset = `${circumference}`; // start empty (0% progress)
+  ring.style.strokeDashoffset = `${circumference}`; 
 }
 function updateRing() {
   const ring = document.getElementById("ring-progress");
   if (!ring || !totalSeconds || !circumference) return;
 
-  const progress = 1 - remainingSeconds / totalSeconds; // 0 -> 1
-  const offset = circumference * (1 - progress);        // circumference -> 0
+  const progress = 1 - remainingSeconds / totalSeconds; 
+  const offset = circumference * (1 - progress);        
   ring.style.strokeDashoffset = `${offset}`;
 }
 
@@ -94,8 +94,8 @@ function convertSeconds(count){
     return min+':'+sec
 }
 
-function taskStatus(){
-    currentTask = task
+function taskStatus(currentTask){
+    
     const tasks = getTasks()
     const thisTask = tasks.find(item => item.id == currentTask.id)
     thisTask.terminated = true

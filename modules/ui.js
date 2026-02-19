@@ -44,7 +44,8 @@ function ListTasks(tasks) {
   const taskslist = []
   if (tasks.length > 0) {
     for (const task of tasks) {
-      const taskDiv = `<div  class="card-div flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4" data-id="${task.id}">
+      if(!task.terminated){
+              const taskDiv = `<div  class="card-div flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4" data-id="${task.id}">
         <img src="${task.logo}" alt="task logo" class="h-12">        
         <div class="flex flex-col gap-2 text-center">
                     <h2 class="font-bold">${task.name}</h2>
@@ -59,7 +60,10 @@ function ListTasks(tasks) {
                         </div>
                 </div>
             </div>`
-      taskslist.push(taskDiv)
+            taskslist.push(taskDiv)
+      }
+
+      
     }
   } else {
     taskslist.push(`
@@ -68,6 +72,8 @@ function ListTasks(tasks) {
   </div>
 `)
   }
+
+
 
   return taskslist.join("")
 }
@@ -349,6 +355,7 @@ export function MainLayout(tasks) {
         ${CurrentTask()}
         ${DailyGoal()}
         ${TodayTasks(tasks)}
+        ${TerminatedTasks(tasks)}
         </main>
             ${Navbar()}
             ${AddTaskModal()}
@@ -371,3 +378,45 @@ export function TimerLayout() {
     `
 }
 
+
+
+
+  function Listterminated(tasks) {
+  const taskslist = []
+  if (tasks.length > 0) {
+    for (const task of tasks) {
+      if(task.terminated){
+          const  taskDiv = `<div  class="card-div flex gap-2 justify-between items-center h-16 w-full bg-[#BDE8F5] rounded-xl px-4" data-id="${task.id}">
+        <img src="${task.logo}" alt="task logo" class="h-12">        
+        <div class="flex flex-col gap-2 text-center">
+                    <h2 class="font-bold">${task.name}</h2>
+                    <span>${task.sessions} session(s)</span>
+                </div>
+                <div class="relative flex gap-2 items-center">               
+                        <button class="play-button cursor-pointer"><i class="fa-solid fa-circle-play text-[#4988C4] text-3xl"></i></button>
+                        <button class="task-menu rounded-full size-5 cursor-pointer"> ⋮ </button>
+                        <div class="drop-menu hidden absolute right-5 bottom-0 mb-2 md:bottom-auto md:top-full md:mt-2 md:mb-0 w-28 bg-white rounded-lg shadow-lg z-50">
+                            <button class="edit block w-full text-left px-3 py-2 rounded-t-lg hover:bg-gray-100">Edit</button>
+                            <button class="delete block w-full text-left px-3 py-2 rounded-b-lg hover:bg-gray-100 text-red-500">Delete</button>
+                        </div>
+                </div>
+            </div>`
+            taskslist.push(taskDiv)
+      }
+    }
+  } else {
+    taskslist.push(`
+  <div class="w-full text-center text-gray-500">
+    No terminated tasks
+  </div>
+`)}
+return taskslist.join("")}
+
+function TerminatedTasks(tasks) {
+  return `<div id="today-tasks" class="flex flex-col justify-center items-center gap-2 my-4">
+                <h2 class="self-start font-bold">Terminated tasks</h2>
+                <div class="flex flex-col justify-center items-center gap-4 w-full">
+                    ${Listterminated(tasks)}
+                </div>
+            </div>`
+}

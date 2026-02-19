@@ -6,7 +6,7 @@ export function saveTask(data){
     const regex = /^[\p{L}0-9 _-]{2,50}$/u;
 
     if (!regex.test(name)) {
-        ShowMessage("Invalid task name ❌", 3000, "bg-red-600");
+        ShowMessage("Invalid task name", 4000, "bg-red-600");
         return;
     }
    const tasks = getTasks()
