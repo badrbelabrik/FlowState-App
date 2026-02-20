@@ -9,7 +9,7 @@ function Header() {
             </div>
         </div>
         <i class="fa-solid fa-bell self-center text-gray-800"></i>    
-    </div>`
+</div>`
 }
 
 function CurrentTask() {
